@@ -22,14 +22,17 @@ const DashboardBody = props => {
             }
         };
         getDevices();
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             setFlag(!flag)
         }, 5000);
+        return () => {
+            clearTimeout(timer)
+        }
 
     }, [flag]);
 
     return <div className={styles.bodyContainer}>
-        {devices.map(el => <Circles />)}
+        {devices.map((el, i) => <Circles key={i} />)}
         <p className={styles.number}>{devices?.length}</p>
         <p className={styles.text}>DEVICES </p>
         <p className={styles.text}>ONLINE </p>

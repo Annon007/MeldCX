@@ -3,7 +3,8 @@ export const NOTIFY = async data => {
         const sendReq = fetch("http://35.201.2.209:8000/notify", {
             method: "POST",
             headers: {
-                "Authorization": localStorage.getItem("MeldCX_Token")
+                "Authorization": `bearer ${localStorage.getItem("MeldCX_Token")}`,
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         });

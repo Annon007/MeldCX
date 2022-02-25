@@ -30,6 +30,8 @@ const Footer = props => {
             Error_Toast(res.error)
         } else if (res.status === 200) {
             Success_Toast(res.msg);
+        } else {
+            Success_Toast(res.msg);
         }
 
     }
