@@ -5,6 +5,7 @@ import { LOGIN } from "../../api/login-api";
 import { LogContext } from "../../store/logContext";
 import styles from "./login.module.css";
 import Loading from "../ui/loading";
+import { Error_Toast, Success_Toast } from "../ui/toast/toast";
 
 const Login = () => {
     const LogCtx = useContext(LogContext);
@@ -18,11 +19,13 @@ const Login = () => {
         const res = await LOGIN(data);
         if (res.status === 200) {
             setIsLoading(false);
+            Success_Toast("Successfully Login!")
             localStorage.setItem("MeldCX_Token", res.token)
             LogCtx.setIsLoggedIn(true);
         }
         else {
-
+            setIsLoading(false);
+            Error_Toast(res.error);
         }
     };
     return <Modal>
@@ -30,7 +33,7 @@ const Login = () => {
         {isLodaing && <Loading />}
         {!isLodaing && <form onSubmit={handleLoginForm} className={styles.formInput}>
             <div className={styles.emailInput}>
-                <input type="email" name="email" placeholder="Email Address" required />
+                <input type="email" name="email" defaultValue="nihal.abedin.annon99@gmail.com" placeholder="Email Address" required />
                 {MailIcon}
             </div>
             <div className={styles.passwordInput}>
