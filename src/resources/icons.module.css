@@ -1,0 +1,12 @@
+.mail {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  left: 2%;
+}
+.password {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  left: 2%;
+}

@@ -1,0 +1,19 @@
+.bodyContainer {
+  width: 100%;
+  height: 100vh;
+  background-color: #ff7043;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.number {
+  font-size: 12rem;
+  color: #fff;
+}
+.text {
+  font-size: 1.6rem;
+  color: #fff;
+  font-weight: 600;
+}
