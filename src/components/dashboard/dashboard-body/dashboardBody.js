@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import styles from "./dashboardBody.module.css";
 import Circles from "../../circles/circles";
-const devices = [];
+
 const DashboardBody = props => {
-    // const [devices, setDevices] = useState([]);
-    const [flag, setFlag] = useState(false);
+    const [devices, setDevices] = useState([]);
+
     useEffect(() => {
         const getDevices = async () => {
             try {
@@ -15,21 +15,23 @@ const DashboardBody = props => {
                     return;
                 }
                 const data = await res.json();
-                // setDevices(data.devices);
-                devices.push(data.devices)
+                setDevices(_ => {
+                    return data.devices;
+                });
+
             } catch (err) {
 
             }
         };
-        getDevices();
         const timer = setTimeout(() => {
-            setFlag(!flag)
+            getDevices();
+
         }, 5000);
         return () => {
             clearTimeout(timer)
         }
 
-    }, [flag]);
+    }, [devices]);
 
     return <div className={styles.bodyContainer}>
         {devices.map((el, i) => <Circles key={i} />)}
